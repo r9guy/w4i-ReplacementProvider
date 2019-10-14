@@ -10,7 +10,6 @@ namespace ReplacementProviderExample
     /// <seealso cref="IReplacementProviderEx" />
     public class Provider : IReplacementProviderEx  // Woodwork4Inventor.ReplacementProvider.dll must be referenced. Can be found in C:\Program Files\Woodwork for Inventor (Inventor version) (Woodwork version)
     {
-        Sap_Material_Selector ReplacementDialog=new Sap_Material_Selector();
         private readonly Replacer _replacer = new Replacer();
 
         /// <summary>
@@ -26,8 +25,6 @@ namespace ReplacementProviderExample
             // IMaterialReplacementData - generic material
             // IColorReplacementData - generic color
             // IHardwareReplacementData - hardware item
-
-            ReplacementDialog.ShowDialog();
 
             switch (replacementData)
             {
@@ -71,7 +68,6 @@ namespace ReplacementProviderExample
                 Replace(data);
                 count++;
             }
-            MessageBox.Show("counted : "+count+" replacememnt recrds");
             
         }
     }

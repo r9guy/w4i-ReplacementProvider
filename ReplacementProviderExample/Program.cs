@@ -17,7 +17,7 @@ namespace ReplacementProviderExample
             //Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Sap_Material_Selector());
+            Application.Run(new ReplacementProvider());
         }
     }
 }

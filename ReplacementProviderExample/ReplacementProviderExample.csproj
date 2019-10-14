@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{76511AB8-589B-4B3F-8514-C4E57E7F0B14}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReplacementProviderExample</RootNamespace>
     <AssemblyName>ReplacementProviderExample</AssemblyName>
@@ -58,11 +58,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs">
+    <Compile Include="Mapping.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Config.Designer.cs">
-      <DependentUpon>Config.cs</DependentUpon>
+    <Compile Include="Mapping.Designer.cs">
+      <DependentUpon>Mapping.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -84,24 +84,33 @@
       <DependentUpon>Replacer.cs</DependentUpon>
     </Compile>
     <Compile Include="Replacer.cs" />
-    <Compile Include="Sap Material Selector.cs">
+    <Compile Include="ReplacementProvider.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sap Material Selector.Designer.cs">
-      <DependentUpon>Sap Material Selector.cs</DependentUpon>
+    <Compile Include="ReplacementProvider.Designer.cs">
+      <DependentUpon>ReplacementProvider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splash.Designer.cs">
+      <DependentUpon>Splash.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Config.resx">
-      <DependentUpon>Config.cs</DependentUpon>
+    <EmbeddedResource Include="Mapping.resx">
+      <DependentUpon>Mapping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sap Material Selector.resx">
-      <DependentUpon>Sap Material Selector.cs</DependentUpon>
+    <EmbeddedResource Include="ReplacementProvider.resx">
+      <DependentUpon>ReplacementProvider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Splash.resx">
+      <DependentUpon>Splash.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -116,9 +125,6 @@
     <None Include="Resources\MaterialsDataSource.csv" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Akacija Cinamon R38004_R5052.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

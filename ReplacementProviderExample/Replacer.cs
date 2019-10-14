@@ -15,6 +15,9 @@ namespace ReplacementProviderExample
     /// </summary>
     public class Replacer
     {
+
+        ReplacementProvider ReplacementData=new ReplacementProvider();
+
         private readonly IList<ReplacementRecord> _materialReplacementRecords = ReadRecords<ReplacementRecord>(Resources.MaterialsDataSource);
         private readonly IList<ReplacementRecord> _colorReplacementRecords = ReadRecords<ReplacementRecord>(Resources.ColorsDataSource);
         private readonly IList<ReplacementRecord> _hardwareReplacementRecords = ReadRecords<ReplacementRecord>(Resources.HardwareDataSource);
@@ -22,7 +25,7 @@ namespace ReplacementProviderExample
 
         public void ReplaceHardware(IHardwareComponent hardwareComponent)
         {
-            var matchedRecord = _hardwareReplacementRecords.SingleOrDefault(x => x.Code == hardwareComponent.Code && x.Name == hardwareComponent.Name);
+            /*var matchedRecord = _hardwareReplacementRecords.SingleOrDefault(x => x.Code == hardwareComponent.Code && x.Name == hardwareComponent.Name);
             if (matchedRecord != null)
             {
                 hardwareComponent.NewCode = matchedRecord.NewCode;
@@ -31,21 +34,18 @@ namespace ReplacementProviderExample
 
                 hardwareComponent.SetAddedProperty("Explanation", matchedRecord.AdditionalValue);
                 hardwareComponent.SetAddedProperty("Explanation 2", matchedRecord.AdditionalValue2);
-            }
+            }*/
         }
 
         public void ReplaceColor(IColor color)
         {
-            var matchedRecord = _colorReplacementRecords.SingleOrDefault(x => x.Code == color.Code && x.Name == color.Name);
+            /*var matchedRecord = _colorReplacementRecords.SingleOrDefault(x => x.Code == color.Code && x.Name == color.Name);
             if (matchedRecord != null)
             {
                 color.NewCode = matchedRecord.NewCode;
                 color.NewName = matchedRecord.NewName;
                 color.NewAppearance = Path.Combine(AssemblyDirectory, matchedRecord.NewAppearance);
-            }
-            color.NewCode = "coder";
-            color.NewName = "user";
-            //color.NewAppearance = "";
+            }*/
         }
 
         public void ReplaceMaterial(IMaterial material)
@@ -58,8 +58,14 @@ namespace ReplacementProviderExample
                 material.NewName = matchedRecord.NewName;
                 material.NewAppearance = matchedRecord.NewAppearance;
             }*/
-            material.NewCode = "arsham";
-            material.NewName = "atonyan";
+
+            
+            if (ReplacementData.ShowDialog()==DialogResult.OK)
+            {
+                material.NewCode = ReplacementData.newCode;
+                material.NewName = ReplacementData.newName;
+            }
+
         }
 
         public void ReplaceMaterialGroup(IMaterial material, IColor color, double width, double thickness)
@@ -84,30 +90,18 @@ namespace ReplacementProviderExample
                 material.NewCode = matchedRecord.NewMaterialCode;
                 material.NewName = matchedRecord.NewMaterialName;
             }*/
-            try
+            
+            if(ReplacementData.FindReplacementMaterial(material.Code,width,thickness))
             {
-                material.NewCode = "arsham";
-                material.NewName = "atonyan";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("material object reference was not set \r\n"+ex.Message);
-            }
-            try
-            {
-                color.NewCode = "white";
-                color.NewName = "black";
-            }
-            catch(Exception ex)
-            {
-               // MessageBox.Show("color object reference was not set \r\n" + ex.Message);
+                material.NewCode = ReplacementData.newCode;
+                material.NewName = ReplacementData.newName;
             }
         }
 
         private static IList<T> ReadRecords<T>(string content)
         {
             var records = new List<T>();
-            using (var parser = new TextFieldParser(new StringReader(content)) { Delimiters = new[] { "," } })
+            using (TextFieldParser parser = new TextFieldParser(new StringReader(content)) { Delimiters = new[] { "," } })
             {
                 var indexByColumn = new Dictionary<string, int>();
                 var headerRow = parser.ReadFields();
