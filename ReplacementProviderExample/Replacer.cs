@@ -18,10 +18,10 @@ namespace ReplacementProviderExample
 
         ReplacementProvider ReplacementData=new ReplacementProvider();
 
-        private readonly IList<ReplacementRecord> _materialReplacementRecords = ReadRecords<ReplacementRecord>(Resources.MaterialsDataSource);
-        private readonly IList<ReplacementRecord> _colorReplacementRecords = ReadRecords<ReplacementRecord>(Resources.ColorsDataSource);
-        private readonly IList<ReplacementRecord> _hardwareReplacementRecords = ReadRecords<ReplacementRecord>(Resources.HardwareDataSource);
-        private readonly IList<ReplacementGroupRecord> _materialGroupReplacementRecords = ReadRecords<ReplacementGroupRecord>(Resources.MaterialGroupsDataSource);
+       // private readonly IList<ReplacementRecord> _materialReplacementRecords = ReadRecords<ReplacementRecord>(Resources.MaterialsDataSource);
+       // private readonly IList<ReplacementRecord> _colorReplacementRecords = ReadRecords<ReplacementRecord>(Resources.ColorsDataSource);
+       // private readonly IList<ReplacementRecord> _hardwareReplacementRecords = ReadRecords<ReplacementRecord>(Resources.HardwareDataSource);
+       // private readonly IList<ReplacementGroupRecord> _materialGroupReplacementRecords = ReadRecords<ReplacementGroupRecord>(Resources.MaterialGroupsDataSource);
 
         public void ReplaceHardware(IHardwareComponent hardwareComponent)
         {

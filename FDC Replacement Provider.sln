@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplacementProviderExample", "ReplacementProviderExample\ReplacementProviderExample.csproj", "{76511AB8-589B-4B3F-8514-C4E57E7F0B14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FDC Replacement W4I", "ReplacementProviderExample\FDC Replacement W4I.csproj", "{76511AB8-589B-4B3F-8514-C4E57E7F0B14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

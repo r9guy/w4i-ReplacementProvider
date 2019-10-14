@@ -117,17 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ColorsDataSource" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColorsDataSource.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="HardwareDataSource" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HardwareDataSource.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="MaterialGroupsDataSource" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MaterialGroupsDataSource.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="MaterialsDataSource" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MaterialsDataSource.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
 </root>

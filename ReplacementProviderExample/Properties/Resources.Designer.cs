@@ -19,7 +19,7 @@ namespace ReplacementProviderExample.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -57,49 +57,6 @@ namespace ReplacementProviderExample.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Code,Name,New Code,New Name,Image File
-        ///F01,Facade 01 group color,aa,bb,.
-        /// </summary>
-        public static string ColorsDataSource {
-            get {
-                return ResourceManager.GetString("ColorsDataSource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Code,Name,New Code,New Name,Image File,Producer
-        ///D15 T18,Minifix Cam,DD,CC,,PP
-        ///D8 L44,Double Sided Mitre Bolt,DD,CC,,PP
-        ///D15,Cap,DD,CC,,PP
-        ///D8 L44,One Side Mitre Bolt,DD,CC,,PP.
-        /// </summary>
-        public static string HardwareDataSource {
-            get {
-                return ResourceManager.GetString("HardwareDataSource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string MaterialGroupsDataSource {
-            get {
-                return ResourceManager.GetString("MaterialGroupsDataSource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Code,Name,New Code,New Name,Image File,Producer
-        ///LMDF,Laminated Medium Density Fiberboard,DD,CC,,PP
-        ///PVC 1,PVC edge band,DD,CC,,PP.
-        /// </summary>
-        public static string MaterialsDataSource {
-            get {
-                return ResourceManager.GetString("MaterialsDataSource", resourceCulture);
             }
         }
     }
