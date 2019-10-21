@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FDC SAP material replacment")]
-[assembly: AssemblyDescription("replaces material code and name to the data found in SAP excel document")]
+[assembly: AssemblyTitle("FDC material replacment provider")]
+[assembly: AssemblyDescription("replaces material code and name to the data found in excel document")]
 [assembly: AssemblyConfiguration("Woodwork for Inventor")]
 [assembly: AssemblyCompany("FDC INTERIORS")]
 [assembly: AssemblyProduct("ReplacementProvider")]

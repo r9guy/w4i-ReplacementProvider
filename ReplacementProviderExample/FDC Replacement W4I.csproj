@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReplacementProviderExample</RootNamespace>
-    <AssemblyName>ReplacementProviderExample</AssemblyName>
+    <AssemblyName>w4i ReplacementProvider for FDC</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

@@ -18,9 +18,16 @@ namespace ReplacementProviderExample
         public ReplacementProvider()
         {
             InitializeComponent();
-            Mapping DataProvider = new Mapping();
-            Table = DataProvider.GetDataTable();
-            dataGridView1.DataSource = Table;
+            try
+            {
+                Mapping DataProvider = new Mapping();
+                Table = DataProvider.GetDataTable();
+                dataGridView1.DataSource = Table;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Setup(object sender, EventArgs e)
@@ -47,77 +54,84 @@ namespace ReplacementProviderExample
         }
         public bool FindReplacementMaterial(string materialCode, double materialWidth, double materialThickness)
         {
-            
             bool returnvalue = false;
-            materialWidth = materialWidth * 10;
-            materialThickness = materialThickness * 10;
-
-            //compose the range which contains only matching material name
-            var rowcounter = 0;
-            double previousThickness = double.MaxValue;
-            double previousWidth = double.MaxValue;
-            foreach (DataRow row in Table.Rows)
+            try
             {
-                string group = (string)row.ItemArray[2];
-                double dataThickness;
-                double dataWidth;
+                materialWidth = materialWidth * 10;
+                materialThickness = materialThickness * 10;
 
-                if (group.ToUpper() == materialCode.ToUpper())
+                //compose the range which contains only matching material name
+                var rowcounter = 0;
+                double previousThickness = double.MaxValue;
+                double previousWidth = double.MaxValue;
+                foreach (DataRow row in Table.Rows)
                 {
-                    //materials with measurment unit SQM are defined by only thickness
-                    if (materialWidth == 0)
+                    string group = (string)row.ItemArray[2];
+                    double dataThickness;
+                    double dataWidth;
+
+                    if (group.ToUpper() == materialCode.ToUpper())
                     {
-                        try
+                        //materials with measurment unit SQM are defined by only thickness
+                        if (materialWidth == 0)
                         {
-                            dataThickness = (double)row.ItemArray[4];
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-                        if (dataThickness >= materialThickness)
-                            if (dataThickness < previousThickness)
+                            try
                             {
-                                previousThickness = dataThickness;
-                                newCode = row.ItemArray[0].ToString();
-                                newName = row.ItemArray[1].ToString();
-                                returnvalue = true;
+                                dataThickness = (double)row.ItemArray[4];
                             }
+                            catch
+                            {
+                                continue;
+                            }
+                            if (dataThickness >= materialThickness)
+                                if (dataThickness < previousThickness)
+                                {
+                                    previousThickness = dataThickness;
+                                    newCode = row.ItemArray[0].ToString();
+                                    newName = row.ItemArray[1].ToString();
+                                    returnvalue = true;
+                                }
+                        }
+
+                        //materials with measurment unit LM are defined by 2 parameters thickness and width
+                        else
+                        {
+                            try
+                            {
+                                dataThickness = (double)row.ItemArray[4];
+                                dataWidth = (double)row.ItemArray[3];
+                            }
+                            catch
+                            {
+                                continue;
+                            }
+                            if (dataWidth >= materialWidth)
+                                if (dataWidth < previousWidth)
+                                {
+                                    if (dataThickness >= materialThickness)
+                                        if (dataThickness < previousThickness)
+                                        {
+                                            previousWidth = dataWidth;
+                                            previousThickness = dataThickness;
+                                            newCode = row.ItemArray[0].ToString();
+                                            newName = row.ItemArray[1].ToString();
+                                            returnvalue = true;
+                                        }
+
+                                }
+                        }
                     }
 
-                    //materials with measurment unit LM are defined by 2 parameters thickness and width
-                    else
-                    {
-                        try
-                        {
-                            dataThickness = (double)row.ItemArray[4];
-                            dataWidth = (double)row.ItemArray[3];
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-                        if (dataWidth >= materialWidth)
-                            if (dataWidth < previousWidth)
-                            {
-                                if (dataThickness >= materialThickness)
-                                    if (dataThickness < previousThickness)
-                                    {
-                                        previousWidth = dataWidth;
-                                        previousThickness = dataThickness;
-                                        newCode = row.ItemArray[0].ToString();
-                                        newName = row.ItemArray[1].ToString();
-                                        returnvalue = true;
-                                    }
-
-                            }
-                    }
+                    rowcounter++;
                 }
 
-                rowcounter++;
             }
-
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             return returnvalue;
+            
         }
 
         private void Test_Click(object sender, EventArgs e)
