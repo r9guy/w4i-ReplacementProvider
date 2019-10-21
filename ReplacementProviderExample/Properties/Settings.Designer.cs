@@ -82,5 +82,17 @@ namespace ReplacementProviderExample.Properties {
                 this["TestCode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public decimal EdgeThreshold {
+            get {
+                return ((decimal)(this["EdgeThreshold"]));
+            }
+            set {
+                this["EdgeThreshold"] = value;
+            }
+        }
     }
 }
