@@ -85,18 +85,20 @@ namespace ReplacementProviderExample
                     if (group.ToUpper() == materialCode.ToUpper())
                     {
                         //materials with measurment unit SQM are defined by only thickness
-                        if (materialWidth == 0)
+                        if (Math.Abs(materialWidth) < 0.001)// if(materialWidth==0) 
                         {
                             try
                             {
-                                dataThickness = Math.Round((double)row.ItemArray[4]);
+                                dataThickness = (double)row.ItemArray[4];
                             }
                             catch
                             {
                                 continue;
                             }
-                            if (dataThickness >= materialThickness)
-                                if (dataThickness < previousThickness)
+                            if (dataThickness - materialThickness >= -0.001)
+                                //if (dataThickness.CompareTo(materialThickness) >=0 )
+                                if (dataThickness - (previousThickness) < 0.001)
+                                //    if (dataThickness.CompareTo(previousThickness) < 0 )
                                 {
                                     previousThickness = dataThickness;
                                     newCode = row.ItemArray[0].ToString();
@@ -111,18 +113,23 @@ namespace ReplacementProviderExample
                         {
                             try
                             {
-                                dataThickness = Math.Round((double)row.ItemArray[4]);
-                                dataWidth = Math.Round((double)row.ItemArray[3]);
+                                
+                                dataThickness = (double)row.ItemArray[4];
+                                dataWidth = (double)row.ItemArray[3] - decimal.ToDouble(numericUpDown1.Value);
                             }
                             catch
                             {
                                 continue;
                             }
-                            if (dataWidth >= materialWidth)
-                                if (dataWidth < previousWidth)
+                            if ((dataWidth-materialWidth>=-0.001)  )
+                            //if (dataWidth>=materialWidth)
+                                if(dataWidth - previousWidth<0.001)
+                                //if (dataWidth<previousWidth)
                                 {
-                                    if (dataThickness >= materialThickness + decimal.ToDouble(numericUpDown1.Value))
-                                        if (dataThickness < previousThickness)
+                                    if (dataThickness- materialThickness>= -0.001)
+                                  //if (dataThickness.CompareTo(materialThickness) >=0 )
+                                        if (dataThickness-(previousThickness) <0.001 )
+                                        //if (dataThickness.CompareTo(previousThickness) <0 )
                                         {
                                             previousWidth = dataWidth;
                                             previousThickness = dataThickness;
@@ -143,6 +150,8 @@ namespace ReplacementProviderExample
                 {
                     dataGridView1.Rows[occurencerow].Selected = true;
                     dataGridView1.FirstDisplayedScrollingRowIndex = occurencerow;
+                    newCode = Table.Rows[occurencerow].ItemArray[0].ToString();
+                    newName = Table.Rows[occurencerow].ItemArray[1].ToString();
                 }
 
             }
@@ -175,9 +184,8 @@ namespace ReplacementProviderExample
             if (selectedrow >= 0)
             {
                 var row = dataGridView1.CurrentRow;
-                newName = (string)row.Cells[0].Value;
-                newCode = (string)row.Cells[1].Value;
-
+                newCode = Table.Rows[selectedrow].ItemArray[0].ToString();
+                newName = Table.Rows[selectedrow].ItemArray[1].ToString();
             }
         }
 

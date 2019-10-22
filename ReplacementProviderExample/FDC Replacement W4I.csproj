@@ -125,6 +125,7 @@
     <None Include="Resources\MaterialsDataSource.csv" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="innosetup.iss" />
     <Content Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
