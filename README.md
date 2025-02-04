@@ -1,5 +1,5 @@
 # w4i-ReplacementProvider
-replacment provider for FDC interiors materials.
+material replacment plugin for Foodwork4Inverter.
 this project can be found @ 
 https://github.com/r9guy/ReplacementProvider/releases
 
